@@ -43,9 +43,20 @@ export default function Navigation(props) {
         <List component="nav" className={styles.marginTop}>
           {mainOptions.map((option, index) =>
             index === 0 ? (
-              <NavbarItem key={option} label={option} href="/" />
+              <NavbarItem
+                key={option}
+                label={option}
+                href="/"
+                active={props.active === "Introduction"}
+              />
             ) : (
-              <NavItemExpandable {...option} key={option.label} />
+              <NavItemExpandable
+                {...option}
+                key={option.label}
+                active={
+                  option.options.includes(props.active) ? props.active : null
+                }
+              />
             )
           )}
         </List>

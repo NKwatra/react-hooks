@@ -10,7 +10,7 @@ import NavbarItem from "./NavbarItem";
 import { useState } from "react";
 
 export default function NavItemExpandable(props) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(props.active !== null);
   return (
     <>
       <ListItem button onClick={() => setOpen(!open)}>
@@ -27,6 +27,7 @@ export default function NavItemExpandable(props) {
               label={option}
               key={option}
               padded
+              active={option === props.active}
             />
           ))}
         </List>

@@ -6,7 +6,11 @@ export default function NavbarItem(props) {
     <>
       <ListItem button component="a" href={props.href}>
         <ListItemText className={props.padded ? styles.padded : ""}>
-          <Typography variant="h6" gutterBottom>
+          <Typography
+            variant="h6"
+            gutterBottom
+            color={props.active ? "primary" : "initial"}
+          >
             {props.label}
           </Typography>
         </ListItemText>
