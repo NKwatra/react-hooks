@@ -1,0 +1,31 @@
+.hamburger {
+  cursor: pointer;
+  position: fixed;
+  left: 24px;
+  top: 24px;
+}
+
+.marginTop {
+  margin-top: 56px !important;
+}
+
+.drawer div:nth-child(3) {
+  width: 280px;
+}
+
+.close {
+  position: fixed;
+  top: 24px;
+  left: 208px;
+  z-index: 1300;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 786px) {
+  .drawer div:nth-child(3) {
+    width: 360px;
+  }
+  .close {
+    left: 308px;
+  }
+}
