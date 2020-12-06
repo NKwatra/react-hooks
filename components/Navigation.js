@@ -1,9 +1,10 @@
-import { Drawer, List } from "@material-ui/core";
-import { useState } from "react";
+import { Drawer, List, makeStyles } from "@material-ui/core";
+import { useContext } from "react";
 import NavbarItem from "../components/NavbarItem";
 import NavItemExpandable from "./NavItemExpandable";
-import { Menu, Close } from "@material-ui/icons";
+import { Close } from "@material-ui/icons";
 import styles from "../styles/navigation.module.css";
+import ThemeContext from "../utils/context";
 
 const basicHookOptions = ["useState", "useEffect", "useContext"];
 const additionalHooksOptions = [
@@ -22,25 +23,43 @@ const mainOptions = [
 ];
 
 export default function Navigation(props) {
-  const [open, setOpen] = useState(false);
+  const theme = useContext(ThemeContext);
+  let customClasses = makeStyles({
+    root: {
+      backgroundColor: theme.background,
+    },
+    paper: {
+      backgroundColor: theme.background,
+    },
+    paperAnchorLeft: {
+      backgroundColor: theme.background,
+    },
+    modal: {
+      backgroundColor: theme.background,
+    },
+  })();
+
   return (
     <>
-      {open ? null : (
-        <Menu
-          className={styles.hamburger}
-          fontSize="large"
-          onClick={() => setOpen(true)}
-        />
-      )}
-      <Drawer anchor="left" open={open} className={styles.drawer}>
-        {open ? (
+      <Drawer
+        anchor="left"
+        open={props.open}
+        className={styles.drawer}
+        classes={{ ...customClasses }}
+      >
+        {props.open ? (
           <Close
             fontSize="large"
-            onClick={() => setOpen(false)}
+            onClick={() => props.setOpen(false)}
             className={styles.close}
+            style={{ color: theme.text }}
           />
         ) : null}
-        <List component="nav" className={styles.marginTop}>
+        <List
+          component="nav"
+          className={styles.marginTop}
+          classes={{ root: customClasses.root }}
+        >
           {mainOptions.map((option, index) =>
             index === 0 ? (
               <NavbarItem
