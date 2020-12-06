@@ -1,13 +1,24 @@
 import { Typography } from "@material-ui/core";
 import { useRouter } from "next/router";
 import Navigation from "../components/Navigation";
-import StateExample from "../components/StateExample";
 import { useState, useEffect } from "react";
 import ThemeContext, { siteThemes, theme } from "../utils/context";
 import Header from "../components/Header";
+import Example from "../components/Example";
 
 const nameToComponentMap = {
-  useState: <StateExample />,
+  useState: {
+    preview:
+      "https://codesandbox.io/embed/lucid-wilson-dlvww?codemirror=1&fontsize=14&hidenavigation=1&module=%2Findex.js&theme=dark&view=preview",
+    editor:
+      "https://codesandbox.io/embed/lucid-wilson-dlvww?codemirror=1&fontsize=14&hidenavigation=1&theme=dark&view=editor&highlights=7,8,9,56,57,74,75,82,83,90,91",
+  },
+  useEffect: {
+    preview:
+      "https://codesandbox.io/embed/react-clock-hnuxc?codemirror=1&fontsize=14&hidenavigation=1&module=%2FApp.js&theme=dark&view=preview",
+    editor:
+      "https://codesandbox.io/embed/react-clock-hnuxc?codemirror=1&fontsize=14&hidenavigation=1&module=%2FApp.js&theme=dark&view=editor&highlights=24,25,26,27,28,29,30,31,32,33,34",
+  },
 };
 
 export default function HookPage(props) {
@@ -20,7 +31,9 @@ export default function HookPage(props) {
     <ThemeContext.Provider value={siteThemes[siteTheme]}>
       <Navigation active={name} open={open} setOpen={setOpen} />
       <Header setOpen={setOpen} name={name} updateSiteTheme={setSiteTheme}>
-        {nameToComponentMap[name] || (
+        {nameToComponentMap[name] ? (
+          <Example {...nameToComponentMap[name]} />
+        ) : (
           <>
             <Typography paragraph>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras

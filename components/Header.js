@@ -19,6 +19,7 @@ export default function Header(props) {
       backgroundColor: theme.page,
       color: theme.text,
       padding: "40px",
+      paddingTop: "100px",
     },
     root: {
       backgroundColor: theme.appbar,
@@ -71,7 +72,7 @@ export default function Header(props) {
           <IconButton onClick={() => props.setOpen(true)}>
             <Menu fontSize="large" style={{ color: theme.text }} />
           </IconButton>
-          <Typography variant="h5" className={customClasses.title}>
+          <Typography variant="h5" classes={{ root: customClasses.title }}>
             {props.name}
           </Typography>
           <Switch
