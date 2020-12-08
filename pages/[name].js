@@ -19,6 +19,12 @@ const nameToComponentMap = {
     editor:
       "https://codesandbox.io/embed/react-clock-hnuxc?codemirror=1&fontsize=14&hidenavigation=1&module=%2FApp.js&theme=dark&view=editor&highlights=24,25,26,27,28,29,30,31,32,33,34",
   },
+  useContext: {
+    preview:
+      "https://codesandbox.io/embed/docs-page-bkye4?codemirror=1&fontsize=14&hidenavigation=1&module=%2FApp.js&theme=dark&view=preview",
+    editor:
+      "https://codesandbox.io/embed/docs-page-bkye4?codemirror=1&fontsize=14&hidenavigation=1&module=%2FApp.js&theme=dark&view=editor&highlights=8,10,14",
+  },
 };
 
 export default function HookPage(props) {
