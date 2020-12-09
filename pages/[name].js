@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Typography, Box, CircularProgress } from "@material-ui/core";
 import { useRouter } from "next/router";
 import Navigation from "../components/Navigation";
 import { useState, useEffect } from "react";
@@ -32,11 +32,50 @@ export default function HookPage(props) {
   const { name } = router.query;
   const [open, setOpen] = useState(false);
   const [siteTheme, setSiteTheme] = useState("dark");
+  const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
 
-  return (
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setProgress(30);
+      const currentTheme = window.localStorage.getItem(theme);
+      setProgress(60);
+      if (currentTheme !== null && siteTheme !== currentTheme)
+        setSiteTheme(currentTheme);
+      setProgress(100);
+      setLoading(false);
+    }
+  }, []);
+
+  return loading ? (
+    <Box position="relative" display="inline-flex">
+      <CircularProgress variant="determinate" value={progress} />
+      <Box
+        top={0}
+        left={0}
+        bottom={0}
+        right={0}
+        position="absolute"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Typography
+          variant="caption"
+          component="div"
+          color="textSecondary"
+        >{`${Math.round(progress)}%`}</Typography>
+      </Box>
+    </Box>
+  ) : (
     <ThemeContext.Provider value={siteThemes[siteTheme]}>
       <Navigation active={name} open={open} setOpen={setOpen} />
-      <Header setOpen={setOpen} name={name} updateSiteTheme={setSiteTheme}>
+      <Header
+        setOpen={setOpen}
+        name={name}
+        updateSiteTheme={setSiteTheme}
+        siteTheme={siteTheme}
+      >
         {nameToComponentMap[name] ? (
           <Example {...nameToComponentMap[name]} />
         ) : (

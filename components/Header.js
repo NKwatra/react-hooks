@@ -12,7 +12,9 @@ import { useContext, useState } from "react";
 import ThemeContext from "../utils/context";
 
 export default function Header(props) {
-  const [switchChecked, setSwitchChecked] = useState(true);
+  const [switchChecked, setSwitchChecked] = useState(
+    props.siteTheme === "dark"
+  );
   const theme = useContext(ThemeContext);
   let customClasses = makeStyles({
     rootPage: {
@@ -80,6 +82,12 @@ export default function Header(props) {
             onChange={(evt) => {
               setSwitchChecked(evt.target.checked);
               props.updateSiteTheme(evt.target.checked ? "dark" : "light");
+              if (typeof window !== undefined) {
+                window.localStorage.setItem(
+                  "react_hooks_theme",
+                  evt.target.checked ? "dark" : "light"
+                );
+              }
             }}
             classes={{
               root: customClasses.switchRoot,
