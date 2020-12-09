@@ -25,6 +25,12 @@ const nameToComponentMap = {
     editor:
       "https://codesandbox.io/embed/docs-page-bkye4?codemirror=1&fontsize=14&hidenavigation=1&module=%2FApp.js&theme=dark&view=editor&highlights=8,10,14",
   },
+  useReducer: {
+    preview:
+      "https://codesandbox.io/embed/todo-list-190r8?codemirror=1&fontsize=14&hidenavigation=1&theme=dark&view=preview",
+    editor:
+      "https://codesandbox.io/embed/todo-list-190r8?codemirror=1&fontsize=14&hidenavigation=1&module=%2FApp.js&theme=dark&view=editor&highlights=64,65,66,67,97,131,135,139",
+  },
 };
 
 export default function HookPage(props) {
