@@ -9,9 +9,9 @@ import Example from "../components/Example";
 const nameToComponentMap = {
   useState: {
     preview:
-      "https://codesandbox.io/embed/lucid-wilson-dlvww?codemirror=1&fontsize=14&hidenavigation=1&module=%2Findex.js&theme=dark&view=preview",
+      "https://codesandbox.io/embed/multicolor-bulb-dlvww?codemirror=1&fontsize=14&hidenavigation=1&module=%2Findex.js&theme=dark&view=preview",
     editor:
-      "https://codesandbox.io/embed/lucid-wilson-dlvww?codemirror=1&fontsize=14&hidenavigation=1&theme=dark&view=editor&highlights=7,8,9,56,57,74,75,82,83,90,91",
+      "https://codesandbox.io/embed/multicolor-bulb--dlvww?codemirror=1&fontsize=14&hidenavigation=1&theme=dark&view=editor&highlights=7,8,9,56,57,74,75,82,83,90,91",
   },
   useEffect: {
     preview:
